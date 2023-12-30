@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./input.css" />
+    <link rel="stylesheet" href="../dist/output.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Quicksand:wght@400;500;700&family=Sofia+Sans+Condensed&family=Sura&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <title>Product Store</title>
+  </head>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/mustache@latest"></script>
+
+  <body>
+    <!----------------------Navbar-------------------------------->
+    <header class="bg-slate-500 py-4 px-4">
+      <div class="flex flex-row justify-between items-center">
+        <!-- Logo -->
+        <h1 class="text-2xl py-2">Products Store</h1>
+        <button
+          id="button-menu"
+          class="p-2 rounded-lg bg-slate-500 hover:bg-slate-700 sm:hidden"
+        >
+          <svg
+            class="w-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"
+              fill="currentColor"
+            ></path>
+          </svg>
+        </button>
+        <!-- Navbar Desktop -->
+        <nav class="sm:flex sm:flex-row hidden space-x-6 items-center">
+          <div class="py-2">
+            <img
+              src="./asset/search.png"
+              class="absolute w-[21px] h-[21px] mx-[9px] my-[12px]"
+            />
+            <input
+              type="text"
+              placeholder="Cari..."
+              class="rounded-lg px-9 py-2"
+            />
+          </div>
+          <div class="flex flex-row gap-[17px] items-center">
+            <a href="index.html" class="hover:text-white">Home</a>
+            <a href="#" class="hover:text-white">Shoes</a>
+            <a href="#" class="hover:text-white">Backpacks</a>
+            <a href="#about" class="hover:text-white">About</a>
+            <a href="#contact" class="hover:text-white">Contact</a>
+            <button class="rounded-lg p-2 bg-slate-500 hover:bg-slate-600">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                class="bi bi-cart"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                />
+              </svg>
+            </button>
+            <button
+              class="bg-gray-400 px-[23px] py-[10px] rounded-lg hover:bg-gray-500"
+            >
+              Sign In
+            </button>
+            <button
+              class="bg-[#b2d0e3] px-[23px] py-[10px] rounded-lg hover:bg-gray-500"
+            >
+              Sign Up
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- Navbar Mobile -->
+    <nav id="mobile-menu" class="hidden flex-col bg-slate-500 w-[100vw] h-[100vh] sm:hidden">
+      <input
+        type="text"
+        placeholder="Cari..."
+        class="rounded-lg m-4 px-3 py-2 items-center"
+      />
+      <div class="flex flex-col pt-4 gap-[17px] items-center">
+        <a href="../index.html" class="hover:text-white">Home</a>
+        <a href="#" class="hover:text-white">Shoes</a>
+        <a href="#" class="hover:text-white">Backpacks</a>
+        <a href="#about" class="hover:text-white">About</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+        <button class="rounded-lg p-2 bg-slate-500 hover:bg-slate-600">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            class="bi bi-cart"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+            />
+          </svg>
+        </button>
+        <div class="flex-row">
+          <button
+            class="bg-gray-400 px-[23px] py-[10px] rounded-lg hover:bg-gray-500"
+          >
+            Sign In
+          </button>
+          <button
+            class="bg-[#b2d0e3] px-[23px] py-[10px] rounded-lg hover:bg-gray-500"
+          >
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!--------------------------------------Carousel Products-------------------------------->
+    <section class="swiper __navigation">
+      <div class="swiper-wrapper __imageNavigation">
+        {{#products}}
+        <div class="swiper-slide flex">
+          <img
+            class="h-[250px] sm:h-[500px] w-full flex justify-center align-middle object-cover"
+            src="{{image}}"
+            alt="{{title}}"
+          />
+          <div
+            class="absolute top-[80px] sm:top-[140px] left-[40px] sm:left-[80px] right-[40px] sm:right-[80px] bg-[#383f3f4d] font-poppins text-center text-[#85eff7]"
+          >
+            <h1 class="text-[23px] sm:text-[69px]">{{title}}</h1>
+            <p class="text-[10px] sm:text-[20px] pb-7">{{desc}}</p>
+            <button
+              class="bg-[#0c3b45] hover:bg-[#cee8ee] hover:text-[#000000] px-2 sm:px-4 py-2 sm:py-4 mb-4 mt-2 sm:mt-4 border-solid rounded-[24px] text-lg sm:text-2xl"
+            >
+              <a href="{{path}}"> {{button}} </a>
+            </button>
+          </div>
+        </div>
+        {{/products}}
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </section> 
+    <!--------------------------------------Shoes Products----------------------------------->
+    <section class="__shoes-product bg-[#bfdeda] px-5 py-5 sm:px-28 sm:py-6">
+      <div class="flex flex-row sm:justify-between justify-center">
+        <h1 class="text-white text-xl sm:text-3xl font-poppins py-7">Shoes Product</h1>
+        <div class="hidden sm:flex sm:flex-row gap-4 py-7">
+          <button class="button-prev">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="cursor-pointer"
+              width="32"
+              height="32"
+            >
+              <path
+                d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"
+              />
+              <path
+                d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"
+              />
+            </svg>
+          </button>
+          <button class="button-next">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="cursor-pointer"
+              width="32"
+              height="32"
+            >
+              <path
+                d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"
+              />
+              <path
+                d="M9.293 8.707 12.586 12l-3.293 3.293 1.414 1.414L15.414 12l-4.707-4.707-1.414 1.414z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="swiper __swiper-card py-6">
+        <div id="shoes-items" class="swiper-wrapper flex flex-row"></div>
+      </div>
+    </section>
+    <!--------------------------------------Bag Products------------------------------------->
+   <section class="__bag-products bg-[#b0dac6] px-5 py-5 sm:px-28 sm:py-6">
+      <div class="flex flex-row sm:justify-between justify-center">
+        <h1 class="text-white text-center text-xl sm:text-3xl font-poppins py-7">
+          Backpacks Product
+        </h1>
+        <div class="hidden sm:flex sm:flex-row gap-4 py-7">
+          <button class="button-prev-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="cursor-pointer"
+              width="32"
+              height="32"
+            >
+              <path
+                d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"
+              />
+              <path
+                d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"
+              />
+            </svg>
+          </button>
+          <button class="button-next-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="cursor-pointer"
+              width="32"
+              height="32"
+            >
+              <path
+                d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"
+              />
+              <path
+                d="M9.293 8.707 12.586 12l-3.293 3.293 1.414 1.414L15.414 12l-4.707-4.707-1.414 1.414z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="swiper __swiper-card-1 py-6">
+        <div id="bags-items" class="swiper-wrapper flex flex-row"></div>
+      </div>
+    </section>
+    <!-------------------------------------------Footer------------------------------------------>
+    <section class="__footer bg-[#000000]">
+      <div class="flex justify-between text-white px-5 py-6">
+        <p>Fake Store</p>
+        <p>Copyright &copy;2023</p>
+      </div>
+    </section> 
+  </body>
+</html>

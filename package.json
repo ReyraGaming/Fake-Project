@@ -1,0 +1,21 @@
+{
+  "name": "tutorial_api",
+  "version": "1.0.0",
+  "description": "Latihan API",
+  "main": "script.js",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.6"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "fontsource-poppins": "^4.0.0",
+    "mustache": "^4.2.0",
+    "swiper": "^11.0.5"
+  }
+}
